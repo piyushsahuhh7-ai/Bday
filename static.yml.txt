@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Ananya!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        /* The Button Screen */
+        #welcome-screen {
+            position: absolute;
+            z-index: 10;
+        }
+
+        .surprise-btn {
+            background-color: #ff6b81;
+            color: white;
+            padding: 20px 40px;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(255, 107, 129, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: 'Pacifico', cursive;
+        }
+
+        .surprise-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(255, 107, 129, 0.6);
+        }
+
+        /* The Party Content (Hidden initially) */
+        #party-content {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            max-width: 800px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #ff4757;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px #ffeaa7;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #57606f;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Photo Gallery Styling */
+        .photo-gallery {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .photo-card {
+            background: white;
+            padding: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: rotate(-5deg);
+            transition: transform 0.3s;
+            width: 250px;
+            border-radius: 10px;
+        }
+
+        .photo-card:nth-child(2) {
+            transform: rotate(5deg);
+            margin-top: 30px;
+        }
+
+        .photo-card:nth-child(3) {
+            transform: rotate(-3deg);
+        }
+
+        .photo-card:hover {
+            transform: scale(1.05) rotate(0deg);
+            z-index: 5;
+        }
+
+        .photo-card img {
+            width: 100%;
+            border-radius: 5px;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .photo-card { width: 90%; margin-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="welcome-screen">
+        <button class="surprise-btn" onclick="startParty()">Click Here for a Surprise! 🎁</button>
+    </div>
+
+    <div id="party-content">
+        <h1>HAPPIEST BIRTHDAY ANANYA ! 🎉</h1>
+        
+        <p>
+            Happy 19th Birthday, Ananya! ✨
+May this year bring you endless smiles, new adventures, and dreams that turn into reality. You’re growing into such a beautiful person inside and out. Stay happy, stay kind, and keep shining always 💫 <br>
+        
+
+
+
+Ananya, you are nineteen today,
+A quiet magic in gentle sway.
+With dreams stitched bright in hopeful hue,
+The world feels warmer knowing you.
+
+Your laughter blooms like morning light,
+Turning ordinary days to bright.
+Each step you take, each wish you start,
+Writes golden lines upon your heart.
+
+May courage walk beside your fears,
+May joy outshine the passing years.
+And when the stars forget to stay,
+May you still glow in your own way.
+
+Happy Birthday, Ananya dear,
+May love find you the whole year through.
+Nineteen looks beautiful on you. ✨🎂.<br>
+            
+        </p>
+
+        <div class="photo-gallery">
+            <div class="photo-card">
+                <img src="WhatsApp Image 2026-01-30 at 19.00.23 (1).jpeg"    alt="Ananya Photo 1" id="img1">
+            </div>
+            
+            <div class="photo-card">
+                 <img src="WhatsApp Image 2026-01-30 at 19.00.23.jpeg" alt="Ananya Photo 2" id="img2">
+            </div>
+
+            <div class="photo-card">
+                 <img src="PHOTO-2026-01-30-19-23-38.jpg" alt="Ananya Photo 3" id="img3">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startParty() {
+            // 1. Hide the button
+            document.getElementById('welcome-screen').style.display = 'none';
+            
+            // 2. Show the content with flex display
+            const content = document.getElementById('party-content');
+            content.style.display = 'flex';
+
+            // 3. Play the birthday audio (Optional - un-comment if you add music)
+            // var audio = new Audio('happy-birthday.mp3');
+            // audio.play();
+
+            // 4. TRIGGER THE CONFETTI BOMB
+            var duration = 3 * 1000;
+            var end = Date.now() + duration;
+
+            (function frame() {
+                // Launch confetti from the left edge
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 }
+                });
+                // Launch confetti from the right edge
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 }
+                });
+
+                // Keep firing until time is up
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+
+            // Big explosion in the center
+            setTimeout(() => {
+                confetti({
+                    particleCount: 150,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }, 500);
+        }
+    </script>
+</body>
+</html>
